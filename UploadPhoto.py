@@ -14,7 +14,8 @@ class GetImage:
         self.file_name = None
 
     def start_get_img(self):
-        self.get_photo_list()   # Запуск любой функции
+        self.save_photo_infolder()
+        self.get_photo_list()  # Запуск любой функции
 
     def open_folder(self):
         self.folder_path = input(
@@ -56,6 +57,10 @@ class GetImage:
                 image_bytes = base64.b64decode(photo[0])
                 with open(f'{photos}\\{cell.value}.jpg', 'wb') as img_file:
                     img_file.write(image_bytes)
+        df = pd.DataFrame({
+            "No_PHOTO": df_photo
+        })
+        df.to_excel(f'{photos}\\Артикула без фото.xlsx')
 
     def check_photo_list(self):
         file_name = input("Введите путь к файлу эксель с артикулами для удаления, Артикулы должны быть в колонке A:A \n [+]")   # Проверка фотографий по списку из эксель файла на соответствие

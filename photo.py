@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-file_name = input("Введите путь к файлу эксель с артикулами для удаления \n [+]")
+file_name = "C:\\Users\\User\\Desktop\\Файл для фото.xlsx"
 photos = input("Введите путь к папке с фотографиями \n {+}")
 df = pd.read_excel(file_name)
 df_photo = []
