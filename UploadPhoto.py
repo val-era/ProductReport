@@ -14,7 +14,7 @@ class GetImage:
         self.file_name = None
 
     def start_get_img(self):
-        self.open_folder()
+        self.HoHo()
         self.get_photo_list()  # Запуск любой функции
 
     def open_folder(self):
