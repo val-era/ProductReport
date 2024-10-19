@@ -203,7 +203,7 @@ class Processing:
                     ws.add_image(img)
                 row_numb += 1
 
-        wb.save("BS_Report.xlsx")
+        wb.save("Best Sellers Report.xlsx")
 
 class CreateStoreDF:
 

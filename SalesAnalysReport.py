@@ -353,7 +353,7 @@ class Processing:
         for column in col:
             which_cols = openpyxl.utils.cell.column_index_from_string(column)
             sheet.delete_cols(which_cols, 1)
-        wb.save("SA_Report.xlsx")
+        wb.save("Sales Analyses Report.xlsx")
 
 
 class CreateStoreDF:
