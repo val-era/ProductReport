@@ -1,6 +1,7 @@
 import base64
 import io
 
+import numpy
 import pandas as pd
 import openpyxl
 from openpyxl.cell.cell import Cell
@@ -394,6 +395,7 @@ class CreateStoreDF:
                     self.store_by_product_type, self.store_by_models)
 
     def process_df(self, df):
+        numpy.seterr(divide='ignore', invalid='ignore')
         self.get_gender_df(df)
         self.get_category_df(df)
         self.get_men_cat(df)
@@ -404,6 +406,7 @@ class CreateStoreDF:
         self.get_by_model(df)
 
     def get_by_model(self, df):
+        numpy.seterr(divide='ignore', invalid='ignore')
         self.store_name = df['Магазин'].unique()
         self.category_name = df['Модель ANTA'].unique()
 
@@ -485,6 +488,7 @@ class CreateStoreDF:
             self.store_by_models[store] = cat_store_df
 
     def get_pr_type(self, df):
+        numpy.seterr(divide='ignore', invalid='ignore')
         self.store_name = df['Магазин'].unique()
         self.category_name = df['Тип продукта'].unique()
 
@@ -563,6 +567,7 @@ class CreateStoreDF:
             self.store_by_product_type[store] = cat_store_df
 
     def get_ftw_collect(self, df_1):
+        numpy.seterr(divide='ignore', invalid='ignore')
         df = df_1.loc[df_1['Категория'] == "FTW"]
         self.store_name = df['Магазин'].unique()
         self.collections_name = df['Коллекция'].unique()
@@ -670,6 +675,7 @@ class CreateStoreDF:
             self.store_by_ftw_coll[store] = cat_store_df
 
     def get_app_collect(self, df_1):
+        numpy.seterr(divide='ignore', invalid='ignore')
         df = df_1.loc[df_1['Категория'] == "APP"]
         self.store_name = df['Магазин'].unique()
         self.collections_name = df['Коллекция'].unique()
@@ -777,6 +783,7 @@ class CreateStoreDF:
             self.store_by_app_coll[store] = cat_store_df
 
     def get_wmn_cat(self, df):
+        numpy.seterr(divide='ignore', invalid='ignore')
         self.store_name = df['Магазин'].unique()
         self.category_name = df['Категория'].unique()
 
@@ -847,6 +854,7 @@ class CreateStoreDF:
             })
 
             for category in self.category_name:
+                numpy.seterr(divide='ignore')
                 category_df = store_df.loc[(store_df['Категория'] == category) & (store_df['Пол'] == "WOMEN")]
                 category1_df = df.loc[(df['Категория'] == category) & (df['Пол'] == "WOMEN")]
                 ns_rd_mix = category1_df['Сумма со скидкой'].sum() / df.loc[df['Пол'] == "WOMEN"]['Сумма со скидкой'].sum()
@@ -964,7 +972,7 @@ class CreateStoreDF:
                 sku_a_mix = category_df.loc[(category_df['Grade'] == "A") & (category_df['Актуальный заказ'] == "Актуально")]['SKU'].sum() / sku
                 sku_b_mix = category_df.loc[(category_df['Grade'] == "B") & (category_df['Актуальный заказ'] == "Актуально")]['SKU'].sum() / sku
                 sku_c_mix = category_df.loc[(category_df['Grade'] == "C") & (category_df['Актуальный заказ'] == "Актуально")]['SKU'].sum() / sku
-                sku_c = category_df.loc[(category_df['Grade'] == "A") & (category_df['Актуальный заказ'] == "Актуально")]['SKU'].sum()
+                sku_c = category_df.loc[(category_df['Grade'] == "C") & (category_df['Актуальный заказ'] == "Актуально")]['SKU'].sum()
 
                 df_gender_bystore = pd.DataFrame({
                     "Category": [category],
