@@ -14,7 +14,8 @@ class Processing:
         self.file_name = "TestFile.xlsx"
         self.category_df = None
 
-    def process(self):
+    def process(self, file_name):
+        self.file_name = file_name
         start_cr_df = CreateStoreDF()  # Класс чтения файла и разбивки на DF магазина
         self.category_df = start_cr_df.create_df(self.file_name)
         self.excel_file()
@@ -351,4 +352,4 @@ class CreateStoreDF:
 
 if __name__ == "__main__":
     start = Processing()
-    start.process()
+    start.process("TestFile.xlsx")

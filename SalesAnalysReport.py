@@ -17,8 +17,8 @@ class Processing:
         self.store_by_gender = None
         self.file_name = "TestFile.xlsx"
 
-
-    def process(self):
+    def process(self, file_name):
+        self.file_name = file_name
         start_cr_df = CreateStoreDF()  # Класс чтения файла и разбивки на DF магазина
         (self.store_by_gender, self.store_by_category,
          self.store_by_men_cat, self.store_by_wmn_cat,
@@ -1198,4 +1198,4 @@ class CreateStoreDF:
 
 if __name__ == "__main__":
     start = Processing()
-    start.process()
+    start.process("TestFile.xlsx")
