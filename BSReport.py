@@ -158,6 +158,14 @@ class Processing:
                 for cell in row:
                     cell.alignment = Alignment(wrapText=True, horizontal='center', vertical='center')
 
+            for cell in ws["E"]:
+                if cell.value not in ["", "RRP"]:
+                    cell.number_format = "# ##0"
+
+            for cell in ws["I"]:
+                if cell.value not in ["", "Сумма со скидкой"]:
+                    cell.number_format = "# ##0"
+
             for col in ws.columns:
                 max_length = 0
                 column = get_column_letter(col[0].column)  # Get the column name
@@ -167,7 +175,7 @@ class Processing:
                             max_length = len(cell.value)
                     except:
                         pass
-                adjusted_width = (max_length + 2) * 1.2
+                adjusted_width = (max_length + 4) * 1.2
                 ws.column_dimensions[column].width = adjusted_width
             ws.column_dimensions['B'].width = 12
             ws.column_dimensions['H'].width = 12
