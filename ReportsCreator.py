@@ -1,3 +1,5 @@
+import time
+
 import BSReport
 import SalesAnalysReport
 import UploadPhoto
@@ -39,6 +41,9 @@ class MainStart:
             UploadPhoto.GetImage().check_photo_list()
         if action == "7":
             UploadPhoto.GetImage().del_photo_file()
+
+        print("Готово")
+        time.sleep(400)
 
 
 if __name__ == "__main__":
