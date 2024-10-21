@@ -35,7 +35,7 @@ class Processing:
 
         ws = wb.create_sheet(title="Информация и метрики")
 
-        """image_bytes = base64.b64decode(GetImage().get_photo("Information"))
+        image_bytes = base64.b64decode(GetImage().get_photo("Information")[0])
 
         image_buffer = io.BytesIO(image_bytes)
         img = openpyxl.drawing.image.Image(image_buffer)
@@ -43,7 +43,7 @@ class Processing:
         img.width = 1024
         number = ws.cell(row=1, column=1)
         img.anchor = number.coordinate
-        ws.add_image(img)"""
+        ws.add_image(img)
 
         for store in self.store_by_gender:
             wb.create_sheet(title=store)
