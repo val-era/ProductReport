@@ -8,6 +8,7 @@ from openpyxl.cell.cell import Cell
 from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.utils import get_column_letter
 from UploadPhoto import GetImage
+from PIL import Image
 
 
 class Processing:

@@ -113,7 +113,7 @@ class GetImage:
             img.anchor = number.coordinate
             ws.add_image(img)
             row_numb += 1
-        wb.save(f"{path}\\NEW{filename}")
+        wb.save(f"NEW{filename}")
 
     def write_sql(self, art, photo):
         con = sqlite3.connect("ProductReportDB.db")   # Запись в базу данных фотографий в формате строки для кодировки
