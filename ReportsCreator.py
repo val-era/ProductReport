@@ -3,6 +3,7 @@ import time
 import BSReport
 import SalesAnalysReport
 import UploadPhoto
+from PIL import Image
 
 class MainStart:
     def __init__(self):
