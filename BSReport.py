@@ -193,9 +193,16 @@ class Processing:
                     self.photo = GetImage().get_photo(cell.value)
                     if self.photo is None:
                         self.photo = GetImage().get_photo("No_photo")
-                    image_bytes = base64.b64decode(self.photo[0])
-                    image_buffer = io.BytesIO(image_bytes)
-                    img = openpyxl.drawing.image.Image(image_buffer)
+                    try:
+                        image_bytes = base64.b64decode(self.photo[0])
+                        image_buffer = io.BytesIO(image_bytes)
+                        img = openpyxl.drawing.image.Image(image_buffer)
+                    except:
+                        print(f"Ошибка с {cell.value}")
+                        self.photo = GetImage().get_photo("No_photo")
+                        image_bytes = base64.b64decode(self.photo[0])
+                        image_buffer = io.BytesIO(image_bytes)
+                        img = openpyxl.drawing.image.Image(image_buffer)
                     img.height = 60
                     img.width = 70
                     number = ws.cell(row=row_numb, column=2)
