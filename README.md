@@ -109,11 +109,11 @@
 
 <br />
 
-$${\color{red}Загрузочный\spaceфайл\spaceдолжен\spaceбыть\spaceв\spaceформате\spaceниже.\spaceНазвания\spaceколонок\spaceдолжны\spaceбыть\spaceкак\spaceв\spaceинструкции\spaceниже}$$. 70% данных колонок выгружается из [автоматического отчета по аналитике остатков](https://github.com/val-era/StockGrade2).
+$${\color{red}Загрузочный}$$ $${\color{red}файл}$$ $${\color{red}должен}$$ $${\color{red}быть}$$ $${\color{red}в}$$ $${\color{red}формате}$$ $${\color{red}ниже.}$$ $${\color{red}Названия}$$ $${\color{red}колонок}$$ $${\color{red}должны}$$ $${\color{red}быть}$$ $${\color{red}как}$$ $${\color{red}в}$$ $${\color{red}инструкции}$$ $${\color{red}ниже}$$. 70% данных колонок выгружается из [автоматического отчета по аналитике остатков](https://github.com/val-era/StockGrade2).
 
 <br />
 
-Имена колонок загрузочного файла. $${\color{red}Обратите\spaceвнимание,\spaceчто\spaceв\spaceнекоторых\spaceименах\spaceколонок\spaceприсутствуют\space[].}$$ $${\color{red}Это\spaceозначает\spaceстрогое\spaceсоответствие\spaceзначений\spaceячеек\spaceв\spaceколонке\spaceс\spaceданными\spaceв\spaceэтих\spaceскобках}$$. Как пример в колонке категория могут быть только значения _APP, FTW, ACC_:
+Имена колонок загрузочного файла. $${\color{red}Обратите}$$ $${\color{red}внимание,}$$ $${\color{red}что}$$ $${\color{red}в}$$ $${\color{red}некоторых}$$ $${\color{red}именах}$$ $${\color{red}колонок}$$ $${\color{red}присутствуют}$$ $${\color{red}[].}$$ $${\color{red}Это}$$ $${\color{red}означает}$$ $${\color{red}строгое}$$ $${\color{red}соответствие}$$ $${\color{red}значений}$$ $${\color{red}ячеек}$$ $${\color{red}в}$$ $${\color{red}колонке}$$ $${\color{red}с}$$ $${\color{red}данными}$$ $${\color{red}в}$$ $${\color{red}этих}$$ $${\color{red}скобках}$$. Как пример в колонке категория могут быть только значения _APP, FTW, ACC_:
 
 <br />
 <br />
