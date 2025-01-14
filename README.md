@@ -204,7 +204,7 @@ $${\color{red}На}$$ $${\color{red}вход}$$ $${\color{red}принимает
     [+]
      
 
-После \[+\] вводится абсолютный путь к загрузочному файлу .xlsx. $${\color{red}Загрузочный\spaceфайл\spaceдолжен\spaceбыть\spaceв\spaceформате\space A:A\space–\spaceартикулы\spaceтовара\spaceв\spaceячейках.}$$
+После \[+\] вводится абсолютный путь к загрузочному файлу .xlsx. $${\color{red}Загрузочный}$$ $${\color{red}файл}$$ $${\color{red}должен}$$ $${\color{red}быть}$$ $${\color{red}в}$$ $${\color{red}формате}$$ $${\color{red}A:A}$$ $${\color{red}–}$$ $${\color{red}артикулы}$$ $${\color{red}товара}$$ $${\color{red}в}$$ $${\color{red}ячейках.}$$
 
     
     Введите путь к папке где должны быть фото
@@ -235,7 +235,7 @@ $${\color{red}На}$$ $${\color{red}вход}$$ $${\color{red}принимает
     [+]
      
 
-После \[+\] вводится абсолютный путь к загрузочному файлу .xlsx. $${\color{red}Загрузочный\spaceфайл\spaceдолжен\spaceбыть\spaceв\spaceформате\space A:A\space–\spaceартикулы\spaceтовара\spaceв\spaceячейках.}$$
+После \[+\] вводится абсолютный путь к загрузочному файлу .xlsx. $${\color{red}Загрузочный}$$ $${\color{red}файл}$$ $${\color{red}должен}$$ $${\color{red}быть}$$ $${\color{red}в}$$ $${\color{red}формате}$$ $${\color{red}A:A}$$ $${\color{red}–}$$ $${\color{red}артикулы}$$ $${\color{red}товара}$$ $${\color{red}в}$$ $${\color{red}ячейках.}$$
 
     
     Введите путь к папке где должны быть фото
@@ -262,7 +262,7 @@ $${\color{red}На}$$ $${\color{red}вход}$$ $${\color{red}принимает
     [+]
      
 
-После \[+\] вводится абсолютный путь к загрузочному файлу .xlsx для удаление фото из БД. $${\color{red}Загрузочный\spaceфайл\spaceдолжен\spaceбыть\spaceв\spaceформате\space A:A\space–\spaceартикулы\spaceтовара\spaceв\spaceячейках.}$$
+После \[+\] вводится абсолютный путь к загрузочному файлу .xlsx для удаление фото из БД. $${\color{red}Загрузочный}$$ $${\color{red}файл}$$ $${\color{red}должен}$$ $${\color{red}быть}$$ $${\color{red}в}$$ $${\color{red}формате}$$ $${\color{red}A:A}$$ $${\color{red}–}$$ $${\color{red}артикулы}$$ $${\color{red}товара}$$ $${\color{red}в}$$ $${\color{red}ячейках.}$$
 
 
 <br />
