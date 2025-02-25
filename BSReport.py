@@ -7,6 +7,7 @@ from openpyxl.cell.cell import Cell
 from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.utils import get_column_letter
 from UploadPhoto import GetImage
+from PIL import JpegImagePlugin
 
 class Processing:
 
@@ -21,6 +22,7 @@ class Processing:
         self.excel_file()
 
     def excel_file(self):
+        JpegImagePlugin._getmp = lambda: None
         wb = openpyxl.Workbook()
         worksheet = wb.active
         wb.remove(worksheet)
