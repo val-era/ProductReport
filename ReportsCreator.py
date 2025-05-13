@@ -51,5 +51,9 @@ class MainStart:
 
 
 if __name__ == "__main__":
-    start = MainStart()
-    start.start()
+    try:
+        start = MainStart()
+        start.start()
+    except Exception as e:
+        print(f"Произошла ошибка {e}")
+        time.sleep(100)
