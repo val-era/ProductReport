@@ -1503,7 +1503,7 @@ class CreateStoreDF:
             self.store_by_men_cat[store] = cat_store_df
 
     def get_category_df(self, df):
-        self.store_name = df['Магазин'].unique()
+        self.store_name = df['Магазин'].sort_values().unique()
         self.category_name = df['Категория'].unique()
 
         cat_df = []

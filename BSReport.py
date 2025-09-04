@@ -9,6 +9,7 @@ from openpyxl.utils import get_column_letter
 from UploadPhoto import GetImage
 from PIL import JpegImagePlugin
 
+
 class Processing:
 
     def __init__(self):
@@ -47,7 +48,7 @@ class Processing:
 
             ws.append(styled_cells(header))
             headers = ['Артикул', "IMG", 'Модель ANTA', 'Сезон', 'RRP', 'Пол',
-                       'Коллекция', 'Кол-во\nпродаж', 'Сумма со скидкой', "Moscow Category\nNet Sales rank"]
+                       'Коллекция', 'Кол-во\nпродаж', 'Сумма со скидкой', "Moscow Category\nNet Sales rank", "Средняя скидка\nпродажи"]
 
             def styled_cells(headers):
                 for c in headers:
@@ -79,7 +80,7 @@ class Processing:
             ws.append(styled_cells(header))
 
             headers = ['Артикул', "IMG", 'Модель ANTA', 'Сезон', 'RRP', 'Пол',
-                       'Коллекция', 'Кол-во\nпродаж', 'Сумма со скидкой', 'Moscow Category\nNet Sales rank']
+                       'Коллекция', 'Кол-во\nпродаж', 'Сумма со скидкой', 'Moscow Category\nNet Sales rank', "Средняя скидка\nпродажи"]
 
             def styled_cells(headers):
                 for c in headers:
@@ -111,7 +112,7 @@ class Processing:
 
             ws.append(styled_cells(header))
             headers = ['Артикул', "IMG", 'Модель ANTA', 'Сезон', 'RRP', 'Пол',
-                       'Коллекция', 'Кол-во\nпродаж', 'Сумма со скидкой', 'Moscow Category\nNet Sales rank']
+                       'Коллекция', 'Кол-во\nпродаж', 'Сумма со скидкой', 'Moscow Category\nNet Sales rank', "Средняя скидка\nпродажи"]
 
             def styled_cells(headers):
                 for c in headers:
@@ -143,7 +144,7 @@ class Processing:
 
             ws.append(styled_cells(header))
             headers = ['Артикул', "IMG", 'Модель ANTA',  'Сезон', 'RRP', 'Пол',
-                       'Коллекция', 'Кол-во\nпродаж', 'Сумма со скидкой', 'Moscow Category\nNet Sales rank']
+                       'Коллекция', 'Кол-во\nпродаж', 'Сумма со скидкой', 'Moscow Category\nNet Sales rank', "Средняя скидка\nпродажи"]
 
             def styled_cells(headers):
                 for c in headers:
@@ -164,6 +165,10 @@ class Processing:
             for cell in ws["E"]:
                 if cell.value not in ["", "RRP"]:
                     cell.number_format = "# ##0"
+
+            for cell in ws["K"]:
+                if cell.value not in ["", "Средняя скидка\nпродажи"]:
+                    cell.number_format = "0%"
 
             for cell in ws["I"]:
                 if cell.value not in ["", "Сумма со скидкой"]:
@@ -261,15 +266,19 @@ class CreateStoreDF:
 
             ttl_df = pd.merge(ttl1_df, ttl2_df[['Артикул', 'Rank by all stores']],
                               on='Артикул', how='left').drop_duplicates(subset=['Артикул'])
+            ttl_df["Average discount"] = 1 - (ttl_df["Сумма со скидкой"] / (ttl_df["RRP"] * ttl_df["Кол-во продаж"]))
 
             ftw_df = pd.merge(ftw1_df, ftw2_df[['Артикул', 'Rank by all stores']],
                               on='Артикул', how='left').drop_duplicates(subset=['Артикул'])
+            ftw_df["Average discount"] = 1 - (ftw_df["Сумма со скидкой"] / (ftw_df["RRP"] * ftw_df["Кол-во продаж"]))
 
             app_df = pd.merge(app1_df, app2_df[['Артикул', 'Rank by all stores']],
                               on='Артикул', how='left').drop_duplicates(subset=['Артикул'])
+            app_df["Average discount"] = 1 - (app_df["Сумма со скидкой"] / (app_df["RRP"] * app_df["Кол-во продаж"]))
 
             acc_df = pd.merge(acc1_df, acc2_df[['Артикул', 'Rank by all stores']],
                               on='Артикул', how='left').drop_duplicates(subset=['Артикул'])
+            acc_df["Average discount"] = 1 - (acc_df["Сумма со скидкой"] / (acc_df["RRP"] * acc_df["Кол-во продаж"]))
 
             # Удаление из топа продаж результатов с продажами 0
             final_ftw_df = ftw_df.loc[ftw_df['Кол-во продаж'] > 0]
@@ -278,13 +287,13 @@ class CreateStoreDF:
             final_ttl_df = ttl_df.loc[ttl_df['Кол-во продаж'] > 0]
             # Занесение результатов по каждой категории с определенными колонками
             category['FTW'] = final_ftw_df[['Артикул', "IMG", 'Модель ANTA', 'Сезон', 'RRP', 'Пол',
-                                            'Коллекция', 'Кол-во продаж', 'Сумма со скидкой', "Rank by all stores"]]
+                                            'Коллекция', 'Кол-во продаж', 'Сумма со скидкой', "Rank by all stores", "Average discount"]]
             category['APP'] = final_app_df[['Артикул', "IMG", 'Модель ANTA', 'Сезон', 'RRP', 'Пол',
-                                            'Коллекция', 'Кол-во продаж', 'Сумма со скидкой', "Rank by all stores"]]
+                                            'Коллекция', 'Кол-во продаж', 'Сумма со скидкой', "Rank by all stores", "Average discount"]]
             category['ACC'] = final_acc_df[['Артикул', "IMG", 'Модель ANTA', 'Сезон', 'RRP', 'Пол',
-                                            'Коллекция', 'Кол-во продаж', 'Сумма со скидкой', "Rank by all stores"]]
+                                            'Коллекция', 'Кол-во продаж', 'Сумма со скидкой', "Rank by all stores", "Average discount"]]
             category['TTL'] = final_ttl_df[['Артикул', "IMG", 'Модель ANTA', 'Сезон', 'RRP', 'Пол',
-                                            'Коллекция', 'Кол-во продаж', 'Сумма со скидкой', "Rank by all stores"]]
+                                            'Коллекция', 'Кол-во продаж', 'Сумма со скидкой', "Rank by all stores", "Average discount"]]
 
             self.bs_df[keys] = category
 
@@ -307,7 +316,7 @@ class CreateStoreDF:
 
     def process_df(self, data):
         df = data
-        self.store_names = df['Магазин'].unique()   # Получаем уникальные магазины из  файла
+        self.store_names = df['Магазин'].sort_values().unique()   # Получаем уникальные магазины из  файла
         total = df.groupby("Артикул")[['Сумма со скидкой', 'Кол-во продаж']].sum().reset_index()   # Создаем общий DF на все магазины
         total_df = pd.merge(total,
                             df[['Артикул', 'Наименование', 'Модель ANTA', 'Категория', 'Сезон', 'SKU', 'RRP',
@@ -342,6 +351,7 @@ class CreateStoreDF:
         self.total_app_df["Rank by all stores"] = self.total_app_df["Сумма со скидкой"].rank(ascending=False,
                                                                                              method='first',
                                                                                              na_option='bottom')
+
 
         total_ftw = df.loc[df['Категория'] == "FTW"].groupby("Артикул")[
             ['Сумма со скидкой', 'Кол-во продаж']].sum().reset_index()  # Создаем общий DF на все магазины
